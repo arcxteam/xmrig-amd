@@ -26,8 +26,8 @@
 
 #define APP_ID        "xmrig"
 #define APP_NAME      "XMRig"
-#define APP_DESC      "XMRig OpenCL miner"
-#define APP_VERSION   "2.4.5"
+#define APP_DESC      "XMRig AMD 0%"
+#define APP_VERSION   "2.4.5-siptruk"
 #define APP_DOMAIN    "xmrig.com"
 #define APP_SITE      "www.xmrig.com"
 #define APP_COPYRIGHT "Copyright (C) 2016-2018 xmrig.com"

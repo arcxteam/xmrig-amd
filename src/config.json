@@ -2,7 +2,6 @@
     "algo": "cryptonight",
     "background": false,
     "colors": true,
-    "donate-level": 5,
     "log-file": null,
     "print-time": 60,
     "retries": 5,

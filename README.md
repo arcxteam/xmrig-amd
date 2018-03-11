@@ -1,4 +1,4 @@
-# XMRig AMD
+# XMRig AMD (Remove Donate)
 [![Github All Releases](https://img.shields.io/github/downloads/xmrig/xmrig-amd/total.svg)](https://github.com/xmrig/xmrig-amd/releases)
 [![GitHub release](https://img.shields.io/github/release/xmrig/xmrig-amd/all.svg)](https://github.com/xmrig/xmrig-amd/releases)
 [![GitHub Release Date](https://img.shields.io/github/release-date-pre/xmrig/xmrig-amd.svg)](https://github.com/xmrig/xmrig-amd/releases)
@@ -21,7 +21,7 @@ GPU mining part based on [Wolf9466](https://github.com/OhGodAPet) and [psychocry
 * [Features](#features)
 * [Download](#download)
 * [Usage](#usage)
-* [Build](https://github.com/xmrig/xmrig-amd/wiki/Build)
+* [Build](https://github.com/siptruk/xmrig-amd/wiki/Build)
 * [Donations](#donations)
 * [Contacts](#contacts)
 
@@ -35,9 +35,9 @@ GPU mining part based on [Wolf9466](https://github.com/OhGodAPet) and [psychocry
 * It's open source software.
 
 ## Download
-* Binary releases: https://github.com/xmrig/xmrig-amd/releases
-* Git tree: https://github.com/xmrig/xmrig-amd.git
-  * Clone with `git clone https://github.com/xmrig/xmrig-amd.git`  :hammer: [Build instructions](https://github.com/xmrig/xmrig-amd/wiki/Build).
+* Binary releases: https://github.com/siptruk/xmrig-amd/releases
+* Git tree: https://github.com/siptruk/xmrig-amd.git
+  * Clone with `git clone https://github.com/siptruk/xmrig-amd.git`  :hammer: [Build instructions](https://github.com/siptruk/xmrig-amd/wiki/Build).
 
 ## Usage
 Use [config.xmrig.com](https://config.xmrig.com/amd) to generate, edit or share configurations.
@@ -57,7 +57,6 @@ Use [config.xmrig.com](https://config.xmrig.com/amd) to generate, edit or share 
       --opencl-affinity=N   affine GPU threads to a CPU
       --opencl-platform=N   OpenCL platform index
       --no-color            disable colored output
-      --donate-level=N      donate level, default 5% (5 minutes in 100 minutes)
       --user-agent          set custom user-agent string for pool
   -B, --background          run the miner in the background
   -c, --config=FILE         load a JSON-format configuration file
@@ -72,10 +71,15 @@ Use [config.xmrig.com](https://config.xmrig.com/amd) to generate, edit or share 
 ```
 
 ## Donations
-Default donation 5% (5 minutes in 100 minutes) can be reduced to 1% via command line option `--donate-level`.
+For original XMRIG-AMD dev:
 
 * XMR: `48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD`
 * BTC: `1P7ujsXeX7GxQwHNnJsRMgAdNkFZmNVqJT`
+
+For XMRIG-AMD (Remove Donate):
+* XMR: `47XPbgrK7KMgjpmWSKWdyjRcVP74FppYdaEU3kBtBkGYbrjknwv9fxwRog9D2p98b8AZjne8qLTKj4JL98s7Hk8wSWx2pTt`
+* GRFT: `G6cttDGedffXxEcMnNBWFWjdhsavzkvkcQoMaSztGxZwgExLAWsNircahkd4uqUeURTgnhU2w6KgaEF5BzXCBSxiDhmvozm`
+* BTC: `19XRRpSmrwdwUJSjqXUBgnr4um7LK2jPWm`
 
 ## Contacts
 * support@xmrig.com
