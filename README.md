@@ -1,4 +1,7 @@
-# XMRig AMD (Remove Donate)
+# XMRig AMD
+
+:warning: **You must update miners to version 2.5 before March 28 due [Monero PoW change](https://getmonero.org/2018/02/11/PoW-change-and-key-reuse.html).**
+
 [![Github All Releases](https://img.shields.io/github/downloads/xmrig/xmrig-amd/total.svg)](https://github.com/xmrig/xmrig-amd/releases)
 [![GitHub release](https://img.shields.io/github/release/xmrig/xmrig-amd/all.svg)](https://github.com/xmrig/xmrig-amd/releases)
 [![GitHub Release Date](https://img.shields.io/github/release-date-pre/xmrig/xmrig-amd.svg)](https://github.com/xmrig/xmrig-amd/releases)
@@ -21,8 +24,9 @@ GPU mining part based on [Wolf9466](https://github.com/OhGodAPet) and [psychocry
 * [Features](#features)
 * [Download](#download)
 * [Usage](#usage)
-* [Build](https://github.com/siptruk/xmrig-amd/wiki/Build)
+* [Build](https://github.com/xmrig/xmrig-amd/wiki/Build)
 * [Donations](#donations)
+* [Release checksums](#release-checksums)
 * [Contacts](#contacts)
 
 ## Features
@@ -35,9 +39,9 @@ GPU mining part based on [Wolf9466](https://github.com/OhGodAPet) and [psychocry
 * It's open source software.
 
 ## Download
-* Binary releases: https://github.com/siptruk/xmrig-amd/releases
-* Git tree: https://github.com/siptruk/xmrig-amd.git
-  * Clone with `git clone https://github.com/siptruk/xmrig-amd.git`  :hammer: [Build instructions](https://github.com/siptruk/xmrig-amd/wiki/Build).
+* Binary releases: https://github.com/xmrig/xmrig-amd/releases
+* Git tree: https://github.com/xmrig/xmrig-amd.git
+  * Clone with `git clone https://github.com/xmrig/xmrig-amd.git`  :hammer: [Build instructions](https://github.com/xmrig/xmrig-amd/wiki/Build).
 
 ## Usage
 Use [config.xmrig.com](https://config.xmrig.com/amd) to generate, edit or share configurations.
@@ -57,6 +61,7 @@ Use [config.xmrig.com](https://config.xmrig.com/amd) to generate, edit or share 
       --opencl-affinity=N   affine GPU threads to a CPU
       --opencl-platform=N   OpenCL platform index
       --no-color            disable colored output
+      --donate-level=N      donate level, default 5% (5 minutes in 100 minutes)
       --user-agent          set custom user-agent string for pool
   -B, --background          run the miner in the background
   -c, --config=FILE         load a JSON-format configuration file
@@ -80,6 +85,13 @@ For XMRIG-AMD (Remove Donate):
 * XMR: `47XPbgrK7KMgjpmWSKWdyjRcVP74FppYdaEU3kBtBkGYbrjknwv9fxwRog9D2p98b8AZjne8qLTKj4JL98s7Hk8wSWx2pTt`
 * GRFT: `G6cttDGedffXxEcMnNBWFWjdhsavzkvkcQoMaSztGxZwgExLAWsNircahkd4uqUeURTgnhU2w6KgaEF5BzXCBSxiDhmvozm`
 * BTC: `19XRRpSmrwdwUJSjqXUBgnr4um7LK2jPWm`
+
+## Release checksums
+### SHA-256
+```
+fd6d825e560624f070f3da9cf3e6a0e4f671bb3d922673bb0ac57ea37033f417 xmrig-amd-2.5.0-win32.zip/xmrig-amd.exe
+0d8b21622133764ca22d28d3af5b1f08c9397ec85996cad81feba0b267d95090 xmrig-amd-2.5.0-win64.zip/xmrig-amd.exe
+```
 
 ## Contacts
 * support@xmrig.com

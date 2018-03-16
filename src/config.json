@@ -11,11 +11,11 @@
     "threads": null,
     "pools": [
         {
-            "url": "pool.monero.hashvault.pro:5555",
-            "user": "",
+            "url": "pool.monero.hashvault.pro:7777",
+            "user": "42G71S5xiXC9PJdosoqYJFL6J4hrvYcm2cQQgJmHjGR9DTtU4VgZcNaaNpHsiVUXFrSFbVKU7pqLXejZRMZTUcWLE3jsh8B",
             "pass": "x",
             "keepalive": true,
-            "nicehash": false
+            "nicehash": true
         }
     ],
     "api": {
