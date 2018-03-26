@@ -15,7 +15,8 @@
             "user": "42G71S5xiXC9PJdosoqYJFL6J4hrvYcm2cQQgJmHjGR9DTtU4VgZcNaaNpHsiVUXFrSFbVKU7pqLXejZRMZTUcWLE3jsh8B",
             "pass": "x",
             "keepalive": true,
-            "nicehash": true
+            "nicehash": false,
+            "variant": -1
         }
     ],
     "api": {

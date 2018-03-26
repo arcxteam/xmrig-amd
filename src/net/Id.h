@@ -21,33 +21,78 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __HTTPD_H__
-#define __HTTPD_H__
+#ifndef __ID_H__
+#define __ID_H__
 
 
-#include <uv.h>
+#include <string.h>
 
 
-struct MHD_Connection;
-struct MHD_Daemon;
-struct MHD_Response;
+namespace xmrig {
 
 
-class Httpd
+class Id
 {
 public:
-    Httpd(int port, const char *accessToken);
-    bool start();
+    inline Id() :
+        m_data()
+    {
+    }
+
+
+    inline Id(const char *id, size_t sizeFix = 0)
+    {
+        setId(id, sizeFix);
+    }
+
+
+    inline bool operator==(const Id &other) const
+    {
+        return memcmp(m_data, other.m_data, sizeof(m_data)) == 0;
+    }
+
+
+    inline bool operator!=(const Id &other) const
+    {
+        return memcmp(m_data, other.m_data, sizeof(m_data)) != 0;
+    }
+
+
+    Id &operator=(const Id &other)
+    {
+        memcpy(m_data, other.m_data, sizeof(m_data));
+
+        return *this;
+    }
+
+
+    inline bool setId(const char *id, size_t sizeFix = 0)
+    {
+        memset(m_data, 0, sizeof(m_data));
+        if (!id) {
+            return false;
+        }
+
+        const size_t size = strlen(id);
+        if (size >= sizeof(m_data)) {
+            return false;
+        }
+
+        memcpy(m_data, id, size - sizeFix);
+        return true;
+    }
+
+
+    inline const char *data() const { return m_data; }
+    inline bool isValid() const     { return *m_data != '\0'; }
+
 
 private:
-    int auth(const char *header);
-
-    static int done(MHD_Connection *connection, int status, MHD_Response *rsp);
-    static int handler(void *cls, MHD_Connection *connection, const char *url, const char *method, const char *version, const char *upload_data, size_t *upload_data_size, void **con_cls);
-
-    const char *m_accessToken;
-    const int m_port;
-    MHD_Daemon *m_daemon;
+    char m_data[64];
 };
 
-#endif /* __HTTPD_H__ */
+
+} /* namespace xmrig */
+
+
+#endif /* __ID_H__ */

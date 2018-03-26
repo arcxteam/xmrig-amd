@@ -21,33 +21,27 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __HTTPD_H__
-#define __HTTPD_H__
+#ifndef __XMRIG_H__
+#define __XMRIG_H__
 
 
-#include <uv.h>
-
-
-struct MHD_Connection;
-struct MHD_Daemon;
-struct MHD_Response;
-
-
-class Httpd
+namespace xmrig
 {
-public:
-    Httpd(int port, const char *accessToken);
-    bool start();
 
-private:
-    int auth(const char *header);
 
-    static int done(MHD_Connection *connection, int status, MHD_Response *rsp);
-    static int handler(void *cls, MHD_Connection *connection, const char *url, const char *method, const char *version, const char *upload_data, size_t *upload_data_size, void **con_cls);
-
-    const char *m_accessToken;
-    const int m_port;
-    MHD_Daemon *m_daemon;
+enum Algo {
+    ALGO_CRYPTONIGHT,      /* CryptoNight (Monero) */
+    ALGO_CRYPTONIGHT_LITE, /* CryptoNight-Lite (AEON) */
 };
 
-#endif /* __HTTPD_H__ */
+
+enum Variant {
+    VARIANT_AUTO = -1,
+    VARIANT_NONE = 0,
+    VARIANT_V1   = 1
+};
+
+} /* xmrig */
+
+
+#endif /* __XMRIG_H__ */

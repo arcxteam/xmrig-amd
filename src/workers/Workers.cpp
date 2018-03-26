@@ -164,10 +164,11 @@ void Workers::setEnabled(bool enabled)
 }
 
 
-void Workers::setJob(const Job &job)
+void Workers::setJob(const Job &job, bool donate)
 {
     uv_rwlock_wrlock(&m_rwlock);
     m_job = job;
+
     uv_rwlock_wrunlock(&m_rwlock);
 
     m_active = true;
