@@ -16,7 +16,7 @@
             "pass": "x",
             "keepalive": true,
             "nicehash": false,
-            "variant": -1
+            "variant": 1 //-1 Autodetect, should work fine with Monero and others coins until their network not updated to v7. Used by default || 0 Force use original cryptonight algorithm || 1 Force use new Monero v1 PoW
         }
     ],
     "api": {

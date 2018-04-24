@@ -1,4 +1,4 @@
-# XMRig AMD (Remove Donate)
+# XMRig AMD [Remove Donate]
 
 :warning: **You must update miners to version 2.5 before April 6 due [Monero PoW change](https://getmonero.org/2018/02/11/PoW-change-and-key-reuse.html).**
 
@@ -24,7 +24,7 @@ GPU mining part based on [Wolf9466](https://github.com/OhGodAPet) and [psychocry
 * [Features](#features)
 * [Download](#download)
 * [Usage](#usage)
-* [Build](https://github.com/xmrig/siptruk/wiki/Build)
+* [Build](https://github.com/xmrig/xmrig-amd/wiki/Build)
 * [Donations](#donations)
 * [Release checksums](#release-checksums)
 * [Contacts](#contacts)
@@ -41,14 +41,14 @@ GPU mining part based on [Wolf9466](https://github.com/OhGodAPet) and [psychocry
 ## Download
 * Binary releases: https://github.com/siptruk/xmrig-amd/releases
 * Git tree: https://github.com/siptruk/xmrig-amd.git
-  * Clone with `git clone https://github.com/siptruk/xmrig-amd.git`  :hammer: [Build instructions](https://github.com/siptruk/xmrig-amd/wiki/Build).
+  * Clone with `git clone https://github.com/siptruk/xmrig-amd.git`  :hammer: [Build instructions](https://github.com/xmrig/xmrig-amd/wiki/Build).
 
 ## Usage
 Use [config.xmrig.com](https://config.xmrig.com/amd) to generate, edit or share configurations.
 
 ### Command line options
 ```
-  -a, --algo=ALGO           cryptonight (default) or cryptonight-lite
+  -a, --algo=ALGO           cryptonight (default), cryptonight-lite or cryptonight-heavy
   -o, --url=URL             URL of mining server
   -O, --userpass=U:P        username:password pair for mining server
   -u, --user=USERNAME       username for mining server
@@ -81,15 +81,9 @@ For original XMRIG-AMD dev:
 * BTC: `1P7ujsXeX7GxQwHNnJsRMgAdNkFZmNVqJT`
 
 For XMRIG-AMD (Remove Donate):
+
 * XMR: `47XPbgrK7KMgjpmWSKWdyjRcVP74FppYdaEU3kBtBkGYbrjknwv9fxwRog9D2p98b8AZjne8qLTKj4JL98s7Hk8wSWx2pTt`
 * BTC: `1AsiaShqZ5fcEZV13obWRb2XhcqnwW7R3Q`
-
-## Release checksums
-### SHA-256
-```
-0894c458403a13818739a09552f14bc12a10c7a71dbcf4ac19cb950c8cdbfbc5 xmrig-amd-2.5.1-win32.zip/xmrig-amd.exe
-c56068aec2873f7a3abd3b869d20a8b6077295ba7d6ef932df349a92d88b0a2c xmrig-amd-2.5.1-win64.zip/xmrig-amd.exe
-```
 
 ## Contacts
 * support@xmrig.com

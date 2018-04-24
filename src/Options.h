@@ -31,6 +31,7 @@
 
 #include "amd/OclCLI.h"
 #include "rapidjson/fwd.h"
+#include "xmrig.h"
 
 
 class OclThread;
@@ -64,14 +65,13 @@ public:
     inline const char *userAgent() const                  { return m_userAgent; }
     inline const std::vector<OclThread*> &threads() const { return m_threads; }
     inline const std::vector<Url*> &pools() const         { return m_pools; }
-    inline int algo() const                               { return m_algo; }
-    inline int algoVariant() const                        { return m_algoVariant; }
     inline int apiPort() const                            { return m_apiPort; }
     inline int platformIndex() const                      { return m_platformIndex; }
     inline int printTime() const                          { return m_printTime; }
     inline int retries() const                            { return m_retries; }
     inline int retryPause() const                         { return m_retryPause; }
     inline void setColors(bool colors)                    { m_colors = colors; }
+    inline xmrig::Algo algorithm() const                  { return m_algorithm; }
 
     inline static void release()                          { delete m_self; }
 
@@ -112,8 +112,6 @@ private:
     char *m_configName;
     char *m_logFile;
     char *m_userAgent;
-    int m_algo;
-    int m_algoVariant;
     int m_apiPort;
     int m_platformIndex;
     int m_printTime;
@@ -122,6 +120,7 @@ private:
     OclCLI m_oclCLI;
     std::vector<OclThread*> m_threads;
     std::vector<Url*> m_pools;
+    xmrig::Algo m_algorithm;
 };
 
 #endif /* __OPTIONS_H__ */
