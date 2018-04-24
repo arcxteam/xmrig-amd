@@ -34,6 +34,7 @@
 #include "log/Log.h"
 #include "net/Client.h"
 #include "net/Network.h"
+#include "net/strategies/DonateStrategy.h"
 #include "net/strategies/FailoverStrategy.h"
 #include "net/strategies/SinglePoolStrategy.h"
 #include "net/SubmitResult.h"
@@ -43,7 +44,8 @@
 
 
 Network::Network(const Options *options) :
-    m_options(options)
+    m_options(options),
+    m_donate(nullptr)
 {
     srand(time(0) ^ (uintptr_t) this);
 
@@ -56,6 +58,10 @@ Network::Network(const Options *options) :
     }
     else {
         m_strategy = new SinglePoolStrategy(pools.front(), options->retryPause(), this);
+    }
+
+    if (m_options->donateLevel() > 0) {
+        m_donate = new DonateStrategy(options->donateLevel(), options->pools().front()->user(), options->algorithm(), this);
     }
 
     m_timer.data = this;
@@ -78,12 +84,21 @@ void Network::connect()
 
 void Network::stop()
 {
+    if (m_donate) {
+        m_donate->stop();
+    }
+
     m_strategy->stop();
 }
 
 
 void Network::onActive(IStrategy *strategy, Client *client)
 {
+    if (m_donate && m_donate == strategy) {
+        LOG_NOTICE("dev donate started");
+        return;
+    }
+
     m_state.setPool(client->host(), client->port(), client->ip());
 
     LOG_INFO(m_options->colors() ? "\x1B[01;37muse pool \x1B[01;36m%s:%d \x1B[01;30m%s" : "use pool %s:%d %s", client->host(), client->port(), client->ip());
@@ -92,18 +107,32 @@ void Network::onActive(IStrategy *strategy, Client *client)
 
 void Network::onJob(IStrategy *strategy, Client *client, const Job &job)
 {
-    setJob(client, job, strategy);
+    if (m_donate && m_donate->isActive() && m_donate != strategy) {
+        return;
+    }
+
+    setJob(client, job, m_donate == strategy);
 }
 
 
 void Network::onJobResult(const JobResult &result)
 {
+    if (result.poolId == -1 && m_donate) {
+        m_donate->submit(result);
+        return;
+    }
+
     m_strategy->submit(result);
 }
 
 
 void Network::onPause(IStrategy *strategy)
 {
+    if (m_donate && m_donate == strategy) {
+        LOG_NOTICE("dev donate finished");
+        m_strategy->resume();
+    }
+
     if (!m_strategy->isActive()) {
         LOG_ERR("no active pools, stop mining");
         m_state.stop();
@@ -139,7 +168,7 @@ void Network::setJob(Client *client, const Job &job, bool donate)
     }
 
     m_state.diff = job.diff();
-    Workers::setJob(job, false);
+    Workers::setJob(job, donate);
 }
 
 
@@ -148,6 +177,10 @@ void Network::tick()
     const uint64_t now = uv_now(uv_default_loop());
 
     m_strategy->tick(now);
+
+    if (m_donate) {
+        m_donate->tick(now);
+    }
 
 #   ifndef XMRIG_NO_API
     Api::tick(m_state);

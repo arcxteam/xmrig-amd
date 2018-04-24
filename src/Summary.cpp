@@ -90,9 +90,10 @@ static void print_cpu()
 
 static void print_algo()
 {
-    Log::i()->text(Options::i()->colors() ? "\x1B[01;32m * \x1B[01;37mALGO:         %s" : " * ALGO:         %s",
+    Log::i()->text(Options::i()->colors() ? "\x1B[01;32m * \x1B[01;37mALGO:         %s, %sdonate=%d%%" : " * ALGO:         %s, %sdonate=%d%%",
                    Options::i()->algoName(),
-                   Options::i()->colors() ? "\x1B[01;31m" : ""
+                   Options::i()->colors() && Options::i()->donateLevel() == 0 ? "\x1B[01;31m" : "",
+                   Options::i()->donateLevel()
     );
 }
 

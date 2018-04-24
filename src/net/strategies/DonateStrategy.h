@@ -21,54 +21,58 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __NETWORK_H__
-#define __NETWORK_H__
+#ifndef __DONATESTRATEGY_H__
+#define __DONATESTRATEGY_H__
 
 
-#include <vector>
 #include <uv.h>
+#include <vector>
 
 
-#include "api/NetworkState.h"
-#include "interfaces/IJobResultListener.h"
+#include "interfaces/IClientListener.h"
+#include "interfaces/IStrategy.h"
 #include "interfaces/IStrategyListener.h"
 
 
-class IStrategy;
-class Options;
+class Client;
+class IStrategyListener;
 class Url;
 
 
-class Network : public IJobResultListener, public IStrategyListener
+class DonateStrategy : public IStrategy, public IStrategyListener
 {
 public:
-  Network(const Options *options);
-  ~Network();
+    DonateStrategy(int level, const char *user, int algo, IStrategyListener *listener);
+    ~DonateStrategy();
 
-  void connect();
-  void stop();
+public:
+    inline bool isActive() const override  { return m_active; }
+    inline void resume() override          {}
+
+    int64_t submit(const JobResult &result) override;
+    void connect() override;
+    void stop() override;
+    void tick(uint64_t now) override;
 
 protected:
-  void onActive(IStrategy *strategy, Client *client) override;
-  void onJob(IStrategy *strategy, Client *client, const Job &job) override;
-  void onJobResult(const JobResult &result) override;
-  void onPause(IStrategy *strategy) override;
-  void onResultAccepted(IStrategy *strategy, Client *client, const SubmitResult &result, const char *error) override;
+    void onActive(IStrategy *strategy, Client *client) override;
+    void onJob(IStrategy *strategy, Client *client, const Job &job) override;
+    void onPause(IStrategy *strategy) override;
+    void onResultAccepted(IStrategy *strategy, Client *client, const SubmitResult &result, const char *error) override;
 
 private:
-  constexpr static int kTickInterval = 1 * 1000;
+    void idle(uint64_t timeout);
+    void suspend();
 
-  void setJob(Client *client, const Job &job, bool donate);
-  void tick();
+    static void onTimer(uv_timer_t *handle);
 
-  static void onTick(uv_timer_t *handle);
-
-  const Options *m_options;
-  IStrategy *m_donate;
-  IStrategy *m_strategy;
-  NetworkState m_state;
-  uv_timer_t m_timer;
+    bool m_active;
+    const int m_donateTime;
+    const int m_idleTime;
+    IStrategy *m_strategy;
+    IStrategyListener *m_listener;
+    std::vector<Url*> m_pools;
+    uv_timer_t m_timer;
 };
 
-
-#endif /* __NETWORK_H__ */
+#endif /* __DONATESTRATEGY_H__ */

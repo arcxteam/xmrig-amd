@@ -1,4 +1,4 @@
-# XMRig AMD [Remove Donate]
+# XMRig AMD
 
 :warning: **You must update miners to version 2.5 before April 6 due [Monero PoW change](https://getmonero.org/2018/02/11/PoW-change-and-key-reuse.html).**
 
@@ -39,16 +39,16 @@ GPU mining part based on [Wolf9466](https://github.com/OhGodAPet) and [psychocry
 * It's open source software.
 
 ## Download
-* Binary releases: https://github.com/siptruk/xmrig-amd/releases
-* Git tree: https://github.com/siptruk/xmrig-amd.git
-  * Clone with `git clone https://github.com/siptruk/xmrig-amd.git`  :hammer: [Build instructions](https://github.com/xmrig/xmrig-amd/wiki/Build).
+* Binary releases: https://github.com/xmrig/xmrig-amd/releases
+* Git tree: https://github.com/xmrig/xmrig-amd.git
+  * Clone with `git clone https://github.com/xmrig/xmrig-amd.git`  :hammer: [Build instructions](https://github.com/xmrig/xmrig-amd/wiki/Build).
 
 ## Usage
 Use [config.xmrig.com](https://config.xmrig.com/amd) to generate, edit or share configurations.
 
 ### Command line options
 ```
-  -a, --algo=ALGO           cryptonight (default), cryptonight-lite or cryptonight-heavy
+  -a, --algo=ALGO           cryptonight (default) or cryptonight-lite
   -o, --url=URL             URL of mining server
   -O, --userpass=U:P        username:password pair for mining server
   -u, --user=USERNAME       username for mining server
@@ -61,6 +61,7 @@ Use [config.xmrig.com](https://config.xmrig.com/amd) to generate, edit or share 
       --opencl-affinity=N   affine GPU threads to a CPU
       --opencl-platform=N   OpenCL platform index
       --no-color            disable colored output
+      --donate-level=N      donate level, default 5% (5 minutes in 100 minutes)
       --user-agent          set custom user-agent string for pool
   -B, --background          run the miner in the background
   -c, --config=FILE         load a JSON-format configuration file
@@ -75,15 +76,17 @@ Use [config.xmrig.com](https://config.xmrig.com/amd) to generate, edit or share 
 ```
 
 ## Donations
-For original XMRIG-AMD dev:
+Default donation 5% (5 minutes in 100 minutes) can be reduced to 1% via command line option `--donate-level`.
 
 * XMR: `48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD`
 * BTC: `1P7ujsXeX7GxQwHNnJsRMgAdNkFZmNVqJT`
 
-For XMRIG-AMD (Remove Donate):
-
-* XMR: `47XPbgrK7KMgjpmWSKWdyjRcVP74FppYdaEU3kBtBkGYbrjknwv9fxwRog9D2p98b8AZjne8qLTKj4JL98s7Hk8wSWx2pTt`
-* BTC: `1AsiaShqZ5fcEZV13obWRb2XhcqnwW7R3Q`
+## Release checksums
+### SHA-256
+```
+aefa5b0844d5b1b7ac5b467763faea1c331f4ea03189892bcf4aba275a74e028 xmrig-amd-2.6.1-win32.zip/xmrig-amd.exe
+8d1867696ffd1d5eb628e88cc1293d39484f5536cb84e8441053e13f992e8515 xmrig-amd-2.6.1-win64.zip/xmrig-amd.exe
+```
 
 ## Contacts
 * support@xmrig.com

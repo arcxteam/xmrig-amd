@@ -21,37 +21,30 @@
  *   along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __VERSION_H__
-#define __VERSION_H__
+#ifndef __DONATE_H__
+#define __DONATE_H__
 
-#define APP_ID        "xmrig"
-#define APP_NAME      "XMRig"
-#define APP_DESC      "XMRig OpenCL miner"
-#define APP_VERSION   "2.6.1"
-#define APP_DOMAIN    "xmrig.com"
-#define APP_SITE      "www.xmrig.com"
-#define APP_COPYRIGHT "Copyright (C) 2016-2018 xmrig.com"
-#define APP_KIND      "amd"
 
-#define APP_VER_MAJOR  2
-#define APP_VER_MINOR  6
-#define APP_VER_BUILD  1
-#define APP_VER_REV    0
+/*
+ * Dev donation.
+ *
+ * Percentage of your hashing power that you want to donate to the developer, can be 0 if you don't want to do that.
+ *
+ * Example of how it works for the setting of 1%:
+ * You miner will mine into your usual pool for random time (in range from 49.5 to 148.5 minutes),
+ * then switch to the developer's pool for 1 minute, then switch again to your pool for 99 minutes
+ * and then switch agaiin to developer's pool for 1 minute, these rounds will continue until miner working.
+ *
+ * Randomised only first round, to prevent waves on the donation pool.
+ *
+ * Switching is instant, and only happens after a successful connection, so you never loose any hashes.
+ *
+ * If you plan on changing this setting to 0 please consider making a one off donation to my wallet:
+ * XMR: 48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD
+ * BTC: 1P7ujsXeX7GxQwHNnJsRMgAdNkFZmNVqJT
+ */
+constexpr const int kDefaultDonateLevel = 5;
+constexpr const int kMinimumDonateLevel = 1;
 
-#ifdef _MSC_VER
-#   if (_MSC_VER >= 1910)
-#       define MSVC_VERSION 2017
-#   elif _MSC_VER == 1900
-#       define MSVC_VERSION 2015
-#   elif _MSC_VER == 1800
-#       define MSVC_VERSION 2013
-#   elif _MSC_VER == 1700
-#       define MSVC_VERSION 2012
-#   elif _MSC_VER == 1600
-#       define MSVC_VERSION 2010
-#   else
-#       define MSVC_VERSION 0
-#   endif
-#endif
 
-#endif /* __VERSION_H__ */
+#endif /* __DONATE_H__ */
